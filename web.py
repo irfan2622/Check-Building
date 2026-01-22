@@ -41,10 +41,10 @@ def load_yolo_model():
 # --- STREAMLIT UI ---
 # --- 1. DATABASE USER (Username: Password) ---
 USER_DB = {
-    "admin": "rahasia123",
-    "lennox": "yolo2026",
-    "analyst_1": "pass789",
-    "user_test": "testing321"
+    "Irfan": "Surveillence_03",
+    "Paulus": "Surveillence_01",
+    "Alfredo": "Surveillence_02",
+    "Johana": "Surveillence_04"
 }
 
 def check_password():
@@ -82,15 +82,15 @@ if check_password():
 
     model = load_yolo_model()
 
-    if model:
-        st.info(f"Model '{MODEL_PATH}' siap digunakan.")
+    #if model:
+        #st.info(f"Model '{MODEL_PATH}' siap digunakan.")
     
     # Drag and Drop Excel
         uploaded_file = st.file_uploader("Upload file Excel dengan kolom 'URL'", type=['xlsx'])
 
         if uploaded_file:
          df = pd.read_excel(uploaded_file)
-         st.write("Preview Data:", df.head(3))
+         st.write("Preview Data:", df.head())
         
         if st.button("🚀 Start Processing"):
             reset_temp_dir()
@@ -160,3 +160,4 @@ if check_password():
     else:
 
         st.warning("Pastikan file 'best.pt' sudah ada di folder yang sama dengan script ini.")
+
