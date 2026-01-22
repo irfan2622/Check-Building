@@ -9,7 +9,7 @@ import shutil
 import zipfile
 
 # --- CONFIGURATION ---
-MODEL_PATH = "C:/Users/M Irfansyah/Downloads/Project2/runs/detect/train/weights/best.pt"  # <--- Nama file model Anda yang sudah "ditanam"
+MODEL_PATH = "best.pt"  # <--- Nama file model Anda yang sudah "ditanam"
 TEMP_DIR = "temp_process"
 
 # --- HELPER FUNCTIONS ---
@@ -158,4 +158,5 @@ if check_password():
             zip_data = create_zip(TEMP_DIR)
             st.download_button("📦 Download Semua (ZIP)", zip_data, "hasil_klasifikasi.zip", use_container_width=True)
     else:
+
         st.warning("Pastikan file 'best.pt' sudah ada di folder yang sama dengan script ini.")
