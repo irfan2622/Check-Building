@@ -4,5 +4,4 @@ requests
 Pillow
 ultralytics
 openpyxl
-libgl1
-libglib2.0-0
+
