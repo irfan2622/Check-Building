@@ -82,7 +82,7 @@ if check_password():
 
     model = load_yolo_model()
 
-    #if model:
+    if model:
         #st.info(f"Model '{MODEL_PATH}' siap digunakan.")
     
     # Drag and Drop Excel
@@ -160,4 +160,5 @@ if check_password():
     else:
 
         st.warning("Pastikan file 'best.pt' sudah ada di folder yang sama dengan script ini.")
+
 
