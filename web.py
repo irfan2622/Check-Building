@@ -78,7 +78,7 @@ if check_password():
         st.rerun()
 
     st.set_page_config(page_title="Building Classifier AI", layout="centered")
-    st.title("🏢 Building Classifier & URL Converter")
+    st.title("🏢 Check Photo Rumah Mitra")
 
     model = load_yolo_model()
 
@@ -160,5 +160,6 @@ if check_password():
     else:
 
         st.warning("Pastikan file 'best.pt' sudah ada di folder yang sama dengan script ini.")
+
 
 
