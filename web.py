@@ -7,6 +7,7 @@ from PIL import Image
 from ultralytics import YOLO
 import shutil
 import zipfile
+import time
 
 # --- CONFIGURATION ---
 MODEL_PATH = "best.pt"  # <--- Nama file model Anda yang sudah "ditanam"
@@ -61,7 +62,7 @@ def check_password():
             # Mengecek apakah username ada di database DAN passwordnya cocok
             if user_input in USER_DB and USER_DB[user_input] == pw_input:
                 st.session_state["authenticated"] = True
-                st.session_state["current_user"] = user_input # Simpan nama user yang login
+                st.session_state["current_user"] = user_input 
                 st.rerun()
             else:
                 st.sidebar.error("Username atau Password salah")
@@ -93,6 +94,7 @@ if check_password():
          st.write("Preview Data:", df.head())
         
         if st.button("🚀 Start Processing"):
+            start_time = time.time()  
             reset_temp_dir()
             data_hasil = []
             
@@ -151,15 +153,21 @@ if check_password():
             df_hasil = pd.DataFrame(data_hasil)
             excel_path = os.path.join(TEMP_DIR, "Laporan_Klasifikasi.xlsx")
             df_hasil.to_excel(excel_path, index=False)
+            end_time = time.time()  # ⏱️ Waktu selesai
+            durasi = end_time - start_time
+
+            menit = int(durasi // 60)
+            detik = int(durasi % 60)
             
             st.success(f"✅ Selesai! {building_count} Building terdeteksi.")
-
+            st.info(f"⏱️ Total durasi proses: {menit} menit {detik} detik")
             # --- DOWNLOAD SECTION ---
             zip_data = create_zip(TEMP_DIR)
             st.download_button("📦 Download Semua (ZIP)", zip_data, "hasil_klasifikasi.zip", use_container_width=True)
     else:
 
         st.warning("Pastikan file 'best.pt' sudah ada di folder yang sama dengan script ini.")
+
 
 
 
