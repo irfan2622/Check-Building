@@ -91,7 +91,7 @@ if check_password():
 
         if uploaded_file:
          df = pd.read_excel(uploaded_file)
-         st.write("Preview Data:", df.head())
+         #st.write("Preview Data:", df.head())
         
         if st.button("🚀 Start Processing"):
             start_time = time.time()  
@@ -167,6 +167,7 @@ if check_password():
     else:
 
         st.warning("Pastikan file 'best.pt' sudah ada di folder yang sama dengan script ini.")
+
 
 
 
